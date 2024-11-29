@@ -2,20 +2,20 @@
 "lab" : {
     "hosts" : {
         "dc01" : {
-            "hostname" : "kingslanding",
+            "hostname" : "dynamo-dc01",
             "type" : "dc",
             "local_admin_password": "8dCT-DJjgScp",
-            "domain" : "sevenkingdoms.local",
-            "path" : "DC=sevenkingdoms,DC=local",
+            "domain" : "dynamo.local",
+            "path" : "DC=dynamo,DC=local",
             "local_groups" : {
                 "Administrators" : [
-                    "sevenkingdoms\\robert.baratheon",
-                    "sevenkingdoms\\cersei.lannister",
-                    "sevenkingdoms\\DragonRider"
+                    "dynamo\\roberto.perez",
+                    "dynamo\\carla.lopez",
+                    "dynamo\\DynamoFriend"
                 ],
                 "Remote Desktop Users" : [
-                    "sevenkingdoms\\Small Council",
-                    "sevenkingdoms\\Baratheon"
+                    "dynamo\\WarehouseOps",
+                    "dynamo\\Perez"
                 ]
             },
             "scripts" : [],
@@ -39,23 +39,23 @@
             },
             "security": ["account_is_sensitive"],
             "security_vars": {
-                "account_is_sensitive" : { "renly": {"account" : "renly.baratheon"} }
+                "account_is_sensitive" : { "manuel": {"account" : "manuel.baratheon"} }
             }
         },
         "dc02" : {
-            "hostname" : "winterfell",
+            "hostname" : "finance-dc02",
             "type" : "dc",
             "local_admin_password": "NgtI75cKV+Pu",
-            "domain" : "north.sevenkingdoms.local",
-            "path" : "DC=north,DC=sevenkingdoms,DC=local",
+            "domain" : "north.dynamo.local",
+            "path" : "DC=north,DC=dynamo,DC=local",
             "local_groups" : {
                 "Administrators" : [
-                    "north\\eddard.stark",
-                    "north\\catelyn.stark",
-                    "north\\robb.stark"
+                    "north\\jose.garcia",
+                    "north\\laura.garcia",
+                    "north\\jesus.garcia"
                 ],
                 "Remote Desktop Users" : [
-                    "north\\Stark"
+                    "north\\Garcia"
                 ]
             },
             "scripts" : [
@@ -73,17 +73,17 @@
                     "setup": "c:\\setup"
                 },
                 "credentials" : {
-                    "TERMSRV/castelblack": {
-                        "username" : "north\\robb.stark",
-                        "secret"   : "sexywolfy",
-                        "runas"    : "north\\robb.stark",
-                        "runas_password" : "sexywolfy"
+                    "TERMSRV/warehouse-srv02": {
+                        "username" : "north\\jesus.garcia",
+                        "secret"   : "noGuard4r",
+                        "runas"    : "north\\jesus.garcia",
+                        "runas_password" : "noGuard4r"
                     }
                 },
                 "autologon" : {
-                    "robb.stark" : {
-                        "username" : "north\\robb.stark",
-                        "password" : "sexywolfy"
+                    "jesus.garcia" : {
+                        "username" : "north\\jesus.garcia",
+                        "password" : "noGuard4r"
                     }
                 },
                 "files" : {
@@ -103,20 +103,20 @@
             }
         },
         "srv02" : {
-            "hostname" : "castelblack",
+            "hostname" : "warehouse-srv02",
             "type" : "server",
             "local_admin_password": "NgtI75cKV+Pu",
-            "domain" : "north.sevenkingdoms.local",
-            "path" : "DC=north,DC=sevenkingdoms,DC=local",
+            "domain" : "north.dynamo.local",
+            "path" : "DC=north,DC=dynamo,DC=local",
             "use_laps": false,
             "local_groups" : {
                 "Administrators" : [
-                    "north\\jeor.mormont"
+                    "north\\ivan.martinez"
                 ],
                 "Remote Desktop Users" : [
-                    "north\\Night Watch",
-                    "north\\Mormont",
-                    "north\\Stark"
+                    "north\\ITSupport",
+                    "north\\Martinez",
+                    "north\\Garcia"
                 ]
             },
             "scripts" : [],
@@ -132,8 +132,8 @@
                         "dest" : "C:\\inetpub\\"
                     },
                     "letter_in_shares": {
-                        "src" : "srv02/all/arya.txt",
-                        "dest": "C:\\shares\\all\\arya.txt"
+                        "src" : "srv02/all/maria.txt",
+                        "dest": "C:\\shares\\all\\maria.txt"
                     }
                 },
                 "permissions" : {
@@ -148,20 +148,20 @@
                 "sa_password": "Sup1_sa_P@ssw0rd!",
                 "svcaccount" : "sql_svc",
                 "sysadmins" : [
-                    "NORTH\\jon.snow"
+                    "NORTH\\juan.iniesta"
                 ],
                 "executeaslogin" : {
-                    "NORTH\\samwell.tarly" : "sa",
-                    "NORTH\\brandon.stark" :  "NORTH\\jon.snow"
+                    "NORTH\\samuel.tejero" : "sa",
+                    "NORTH\\vicente.garcia" :  "NORTH\\juan.iniesta"
                 },
                 "executeasuser" : {
                     "arya_master_dbo": {
-                        "user": "NORTH\\arya.stark",
+                        "user": "NORTH\\maria.garcia",
                         "db"  : "master",
                         "impersonate" : "dbo"
                     },
                     "arya_dbms_dbo": {
-                        "user": "NORTH\\arya.stark",
+                        "user": "NORTH\\maria.garcia",
                         "db"  : "msdb",
                         "impersonate" : "dbo"
                     }
@@ -170,142 +170,142 @@
         }
     },
     "domains" : {
-        "north.sevenkingdoms.local" : {
+        "north.dynamo.local" : {
             "dc": "dc02",
             "domain_password" : "NgtI75cKV+Pu",
             "netbios_name": "NORTH",
             "trust" : "",
-            "laps_path": "OU=Laps,DC=north,DC=sevenkingdoms,DC=local",
+            "laps_path": "OU=Laps,DC=north,DC=dynamo,DC=local",
             "organisation_units" : {
             },
             "groups" : {
                 "universal" : {},
                 "global" : {
-                    "Stark" : {
-                        "managed_by" : "eddard.stark",
-                        "path" : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                    "Garcia" : {
+                        "managed_by" : "jose.garcia",
+                        "path" : "CN=Users,DC=North,DC=dynamo,DC=local"
                     },
-                    "Night Watch" : {
-                        "managed_by" : "jeor.mormont",
-                        "path" : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                    "ITSupport" : {
+                        "managed_by" : "ivan.martinez",
+                        "path" : "CN=Users,DC=North,DC=dynamo,DC=local"
                     },
-                    "Mormont" : {
-                        "managed_by" : "jeor.mormont",
-                        "path" : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                    "Martinez" : {
+                        "managed_by" : "ivan.martinez",
+                        "path" : "CN=Users,DC=North,DC=dynamo,DC=local"
                     }
                 },
                 "domainlocal" : {
                     "AcrossTheSea" : {
-                        "path" : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                        "path" : "CN=Users,DC=North,DC=dynamo,DC=local"
                     }
                 }
             },
             "multi_domain_groups_member" : {},
             "acls" : {
-                "anonymous_rpc" : {"for": "NT AUTHORITY\\ANONYMOUS LOGON", "to": "DC=North,DC=sevenkingdoms,DC=local", "right": "ReadProperty", "inheritance": "All"},
-                "anonymous_rpc2" : {"for": "NT AUTHORITY\\ANONYMOUS LOGON", "to": "DC=North,DC=sevenkingdoms,DC=local", "right": "GenericExecute", "inheritance": "All"}
+                "anonymous_rpc" : {"for": "NT AUTHORITY\\ANONYMOUS LOGON", "to": "DC=North,DC=dynamo,DC=local", "right": "ReadProperty", "inheritance": "All"},
+                "anonymous_rpc2" : {"for": "NT AUTHORITY\\ANONYMOUS LOGON", "to": "DC=North,DC=dynamo,DC=local", "right": "GenericExecute", "inheritance": "All"}
             },
             "users" : {
-                "arya.stark" : {
-                    "firstname"   : "Arya",
-                    "surname"     : "Stark",
-                    "password"    : "Needle",
-                    "city"        : "Winterfell",
-                    "description" : "Arya Stark",
-                    "groups"      : ["Stark"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                "maria.garcia" : {
+                    "firstname"   : "Maria",
+                    "surname"     : "Garcia",
+                    "password"    : "quieroNoPuedo",
+                    "city"        : "Madrid",
+                    "description" : "Maria Garcia",
+                    "groups"      : ["Garcia"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
-                "eddard.stark" : {
-                    "firstname"   : "Eddard",
-                    "surname"     : "Stark",
+                "jose.garcia" : {
+                    "firstname"   : "Jose",
+                    "surname"     : "Garcia",
                     "password"    : "FightP3aceAndHonor!",
-                    "city"        : "King's Landing",
-                    "description" : "Eddard Stark",
-                    "groups"      : ["Stark", "Domain Admins"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                    "city"        : "Barcelona",
+                    "description" : "Jose Garcia",
+                    "groups"      : ["Garcia", "Domain Admins"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
-                "catelyn.stark" : {
-                    "firstname"   : "Catelyn",
-                    "surname"     : "Stark",
-                    "password"    : "robbsansabradonaryarickon",
-                    "city"        : "King's Landing",
-                    "description" : "Catelyn Stark",
-                    "groups"      : ["Stark"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                "laura.garcia" : {
+                    "firstname"   : "Laura",
+                    "surname"     : "Garcia",
+                    "password"    : "jesuslauramariapedro",
+                    "city"        : "Barcelona",
+                    "description" : "Laura Garcia",
+                    "groups"      : ["Garcia"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
-                "robb.stark" : {
-                    "firstname"   : "Robb",
-                    "surname"     : "Stark",
-                    "password"    : "sexywolfy",
-                    "city"        : "Winterfell",
-                    "description" : "Robb Stark",
-                    "groups"      : ["Stark"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                "jesus.garcia" : {
+                    "firstname"   : "Jesus",
+                    "surname"     : "Garcia",
+                    "password"    : "noGuard4r",
+                    "city"        : "Madrid",
+                    "description" : "Jesus Garcia",
+                    "groups"      : ["Garcia"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
-                "sansa.stark" : {
-                    "firstname"   : "Sansa",
-                    "surname"     : "Stark",
+                "susana.garcia" : {
+                    "firstname"   : "Susana",
+                    "surname"     : "Garcia",
                     "password"    : "345ertdfg",
-                    "city"        : "Winterfell",
-                    "description" : "Sansa Stark",
-                    "groups"      : ["Stark"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local",
-                    "spns"        : ["HTTP/eyrie.north.sevenkingdoms.local"]
+                    "city"        : "Madrid",
+                    "description" : "Susana Garcia",
+                    "groups"      : ["Garcia"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local",
+                    "spns"        : ["HTTP/villatoro.north.dynamo.local"]
                 },
-                "brandon.stark" : {
-                    "firstname"   : "Brandon",
-                    "surname"     : "Stark",
+                "vicente.garcia" : {
+                    "firstname"   : "Vicente",
+                    "surname"     : "Garcia",
                     "password"    : "iseedeadpeople",
-                    "city"        : "Winterfell",
-                    "description" : "Brandon Stark",
-                    "groups"      : ["Stark"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                    "city"        : "Madrid",
+                    "description" : "Vicente Garcia",
+                    "groups"      : ["Garcia"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
-                "rickon.stark" : {
-                    "firstname"   : "Rickon",
-                    "surname"     : "Stark",
-                    "password"    : "Winter2022",
-                    "city"        : "Winterfell",
-                    "description" : "Rickon Stark",
-                    "groups"      : ["Stark"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                "raul.garcia" : {
+                    "firstname"   : "Raul",
+                    "surname"     : "Garcia",
+                    "password"    : "Verano2025",
+                    "city"        : "Madrid",
+                    "description" : "Raul Garcia",
+                    "groups"      : ["Garcia"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
-                "hodor" : {
-                    "firstname"   : "hodor",
-                    "surname"     : "hodor",
-                    "password"    : "hodor",
-                    "city"        : "Winterfell",
-                    "description" : "Brainless Giant",
-                    "groups"      : ["Stark"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                "pepe" : {
+                    "firstname"   : "pepe",
+                    "surname"     : "pepe",
+                    "password"    : "pepe",
+                    "city"        : "Madrid",
+                    "description" : "El becario",
+                    "groups"      : ["Garcia"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
-                "jon.snow" : {
-                    "firstname"   : "Jon",
+                "juan.iniesta" : {
+                    "firstname"   : "Juan",
                     "surname"     : "Snow",
                     "password"    : "iknownothing",
-                    "city"        : "Castel Black",
-                    "description" : "Jon Snow",
-                    "groups"      : ["Stark", "Night Watch"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local",
-                    "spns"        : ["HTTP/thewall.north.sevenkingdoms.local"]
+                    "city"        : "Burgos",
+                    "description" : "Juan Iniesta",
+                    "groups"      : ["Garcia", "ITSupport"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local",
+                    "spns"        : ["HTTP/firewall.north.dynamo.local"]
                 },
-                "samwell.tarly" : {
-                    "firstname"   : "Samwell",
-                    "surname"     : "Tarly",
-                    "password"    : "Heartsbane",
-                    "city"        : "Castel Black",
-                    "description" : "Samwell Tarly (Password : Heartsbane)",
-                    "groups"      : ["Night Watch"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                "samuel.tejero" : {
+                    "firstname"   : "Samuel",
+                    "surname"     : "Tejero",
+                    "password"    : "Espadas",
+                    "city"        : "Burgos",
+                    "description" : "Samuel Tejero (Password : Espadas)",
+                    "groups"      : ["ITSupport"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
-                "jeor.mormont" : {
-                    "firstname"   : "Jeor",
-                    "surname"     : "Mormont",
+                "ivan.martinez" : {
+                    "firstname"   : "Ivan",
+                    "surname"     : "Martinez",
                     "password"    : "_L0ngCl@w_",
-                    "city"        : "Castel Black",
-                    "description" : "Jeor Mormont",
-                    "groups"      : ["Night Watch", "Mormont"],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local"
+                    "city"        : "Burgos",
+                    "description" : "Ivan Martinez",
+                    "groups"      : ["ITSupport", "Martinez"],
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local"
                 },
                 "sql_svc" : {
                     "firstname"   : "sql",
@@ -314,172 +314,172 @@
                     "city"        : "-",
                     "description" : "sql service",
                     "groups"      : [],
-                    "path"        : "CN=Users,DC=North,DC=sevenkingdoms,DC=local",
-                    "spns"        : ["MSSQLSvc/castelblack.north.sevenkingdoms.local:1433","MSSQLSvc/castelblack.north.sevenkingdoms.local"]
+                    "path"        : "CN=Users,DC=North,DC=dynamo,DC=local",
+                    "spns"        : ["MSSQLSvc/warehouse-srv02.north.dynamo.local:1433","MSSQLSvc/warehouse-srv02.north.dynamo.local"]
                 }
             }
         },
-        "sevenkingdoms.local" : {
+        "dynamo.local" : {
             "dc": "dc01",
             "domain_password" : "8dCT-DJjgScp",
-            "netbios_name": "SEVENKINGDOMS",
+            "netbios_name": "DYNAMO",
             "trust" : "",
-            "laps_path": "OU=Laps,DC=sevenkingdoms,DC=local",
+            "laps_path": "OU=Laps,DC=dynamo,DC=local",
             "organisation_units" : {
-                "Vale"        : { "path" : "DC=sevenkingdoms,DC=local"},
-                "IronIslands" : { "path" : "DC=sevenkingdoms,DC=local"},
-                "Riverlands"  : { "path" : "DC=sevenkingdoms,DC=local"},
-                "Crownlands"  : { "path" : "DC=sevenkingdoms,DC=local"},
-                "Stormlands"  : { "path" : "DC=sevenkingdoms,DC=local"},
-                "Westerlands" : { "path" : "DC=sevenkingdoms,DC=local"},
-                "Reach"       : { "path" : "DC=sevenkingdoms,DC=local"},
-                "Dorne"       : { "path" : "DC=sevenkingdoms,DC=local"}
+                "Murcia"        : { "path" : "DC=dynamo,DC=local"},
+                "Baleares" : { "path" : "DC=dynamo,DC=local"},
+                "Galicia"  : { "path" : "DC=dynamo,DC=local"},
+                "CMadrid"  : { "path" : "DC=dynamo,DC=local"},
+                "Catalunna"  : { "path" : "DC=dynamo,DC=local"},
+                "Andalucia" : { "path" : "DC=dynamo,DC=local"},
+                "CValencia"       : { "path" : "DC=dynamo,DC=local"},
+                "Canarias"       : { "path" : "DC=dynamo,DC=local"}
             },
             "groups" : {
                 "universal" : {},
                 "global" : {
-                    "Lannister" : {
-                        "managed_by" : "tywin.lannister",
-                        "path" : "OU=Westerlands,DC=sevenkingdoms,DC=local"
+                    "Lopez" : {
+                        "managed_by" : "kiko.lopez",
+                        "path" : "OU=Andalucia,DC=dynamo,DC=local"
                     },
-                    "Baratheon" : {
-                        "managed_by" : "robert.baratheon",
-                        "path" : "OU=Stormlands,DC=sevenkingdoms,DC=local"
+                    "Perez" : {
+                        "managed_by" : "roberto.perez",
+                        "path" : "OU=Catalunna,DC=dynamo,DC=local"
                     },
-                    "Small Council" : {
-                        "path" : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "WarehouseOps" : {
+                        "path" : "OU=CMadrid,DC=dynamo,DC=local"
                     },
-                    "DragonStone" : {
-                        "path" : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "Gamonal" : {
+                        "path" : "OU=CMadrid,DC=dynamo,DC=local"
                     },
-                    "KingsGuard" : {
-                        "path" : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "WarehouseGuards" : {
+                        "path" : "OU=CMadrid,DC=dynamo,DC=local"
                     },
-                    "DragonRider" : {
-                        "path" : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "DynamoFriend" : {
+                        "path" : "OU=CMadrid,DC=dynamo,DC=local"
                     }
                 },
                 "domainlocal" : {
-                    "AcrossTheNarrowSea" : {
-                        "path" : "CN=Users,DC=sevenkingdoms,DC=local"
+                    "NorthPeople" : {
+                        "path" : "CN=Users,DC=dynamo,DC=local"
                     }
                 }
             },
             "multi_domain_groups_member" : {
             },
             "acls" : {
-                "forcechangepassword_tywin_jaime" : {"for": "tywin.lannister", "to": "jaime.lannister", "right": "Ext-User-Force-Change-Password", "inheritance": "None"},
-                "GenericWrite_on_user_jaimie_joffrey" : {"for": "jaime.lannister", "to": "joffrey.baratheon", "right": "GenericWrite", "inheritance": "None"},
-                "Writedacl_joffrey_tyron" : {"for": "joffrey.baratheon", "to": "tyron.lannister", "right": "WriteDacl", "inheritance": "None"},
-                "self-self-membership-on-group_tyron_small_council" : {"for": "tyron.lannister", "to": "Small Council", "right": "Ext-Self-Self-Membership", "inheritance": "None"},
-                "addmember_smallcouncil_DragonStone" : {"for": "Small Council", "to": "DragonStone", "right": "Ext-Write-Self-Membership", "inheritance": "All"},
-                "write_owner_dragonstone_kingsguard" : {"for": "DragonStone", "to": "KingsGuard", "right": "WriteOwner", "inheritance": "None"},
-                "GenericAll_kingsguard_stanis" : {"for": "KingsGuard", "to": "stannis.baratheon", "right": "GenericAll", "inheritance": "None"},
-                "GenericAll_stanis_dc" : {"for": "stannis.baratheon", "to": "kingslanding$", "right": "GenericAll", "inheritance": "None"},
-                "GenericAll_group_acrrosdom_dc" : {"for": "AcrossTheNarrowSea", "to": "kingslanding$", "right": "GenericAll", "inheritance": "None"},
-                "GenericAll_varys_domadmin" : {"for": "lord.varys", "to": "Domain Admins", "right": "GenericAll", "inheritance": "None"},
-                "GenericAll_varys_domadmin_holder" : {"for": "lord.varys", "to": "CN=AdminSDHolder,CN=System,DC=sevenkingdoms,DC=local", "right": "GenericAll", "inheritance": "None"},
-                "WriteDACL_renly_Crownlands" : {"for": "renly.baratheon", "to": "OU=Crownlands,DC=sevenkingdoms,DC=local", "right": "WriteDacl", "inheritance": "None"}
+                "cambiodecontrasena_kiko_jaime" : {"for": "kiko.lopez", "to": "jaime.lopez", "right": "Ext-User-Force-Change-Password", "inheritance": "None"},
+                "GenericWrite_on_user_jaimie_joffrey" : {"for": "jaime.lopez", "to": "javier.lopez", "right": "GenericWrite", "inheritance": "None"},
+                "EscribirListaControlAcceso_javier_daniel" : {"for": "javier.lopez", "to": "daniel.lopez", "right": "WriteDacl", "inheritance": "None"},
+                "autoautoasociacion-en-grupo_daniel_warehouseops" : {"for": "daniel.lopez", "to": "WarehouseOps", "right": "Ext-Self-Self-Membership", "inheritance": "None"},
+                "agregarmiembro_warehouseops_Gamonal" : {"for": "WarehouseOps", "to": "Gamonal", "right": "Ext-Write-Self-Membership", "inheritance": "All"},
+                "escribir_propietario_gamonal_warehouseguards" : {"for": "Gamonal", "to": "WarehouseGuards", "right": "WriteOwner", "inheritance": "None"},
+                "GenericAll_warehouseguards_sandra" : {"for": "WarehouseGuards", "to": "sandra.perez", "right": "GenericAll", "inheritance": "None"},
+                "GenericAll_sandra_dc" : {"for": "sandra.perez", "to": "dynamo-dc01$", "right": "GenericAll", "inheritance": "None"},
+                "GenericAll_grupo_northpeople_dc" : {"for": "NorthPeople", "to": "dynamo-dc01$", "right": "GenericAll", "inheritance": "None"},
+                "GenericAll_vega_administradordominio" : {"for": "lord.vega", "to": "Domain Admins", "right": "GenericAll", "inheritance": "None"},
+                "GenericAll_vega_administradordominio_portador" : {"for": "lord.vega", "to": "CN=AdminSDHolder,CN=System,DC=dynamo,DC=local", "right": "GenericAll", "inheritance": "None"},
+                "WriteDACL_manuel_CMadrid" : {"for": "manuel.baratheon", "to": "OU=CMadrid,DC=dynamo,DC=local", "right": "WriteDacl", "inheritance": "None"}
             },
             "users" : {
-                "tywin.lannister" : {
-                    "firstname"   : "Tywin",
+                "kiko.lopez" : {
+                    "firstname"   : "Kiko",
                     "surname"     : "Lanister",
                     "password"    : "powerkingftw135",
-                    "city"        : "Casterly Rock",
-                    "description" : "Tywin Lanister",
-                    "groups"      : ["Lannister"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "city"        : "Sevilla",
+                    "description" : "Kiko Lanister",
+                    "groups"      : ["Lopez"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "jaime.lannister" : {
+                "jaime.lopez" : {
                     "firstname"   : "Jaime",
                     "surname"     : "Lanister",
-                    "password"    : "cersei",
-                    "city"        : "King's Landing",
+                    "password"    : "carla",
+                    "city"        : "Barcelona",
                     "description" : "Jaime Lanister",
-                    "groups"      : ["Lannister"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "groups"      : ["Lopez"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "cersei.lannister" : {
-                    "firstname"   : "Cersei",
+                "carla.lopez" : {
+                    "firstname"   : "Carla",
                     "surname"     : "Lanister",
                     "password"    : "il0vejaime",
-                    "city"        : "King's Landing",
-                    "description" : "Cersei Lanister",
-                    "groups"      : ["Lannister","Baratheon","Domain Admins","Small Council"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "city"        : "Barcelona",
+                    "description" : "Carla Lanister",
+                    "groups"      : ["Lopez","Perez","Domain Admins","WarehouseOps"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "tyron.lannister" : {
-                    "firstname"   : "Tyron",
+                "daniel.lopez" : {
+                    "firstname"   : "Daniel",
                     "surname"     : "Lanister",
                     "password"    : "Alc00L&S3x",
-                    "city"        : "King's Landing",
-                    "description" : "Tyron Lanister",
-                    "groups"      : ["Lannister"],
-                    "path"        : "OU=Westerlands,DC=sevenkingdoms,DC=local"
+                    "city"        : "Barcelona",
+                    "description" : "Daniel Lanister",
+                    "groups"      : ["Lopez"],
+                    "path"        : "OU=Andalucia,DC=dynamo,DC=local"
                 },
-                "robert.baratheon" : {
-                    "firstname"   : "Robert",
-                    "surname"     : "Baratheon",
+                "roberto.perez" : {
+                    "firstname"   : "Roberto",
+                    "surname"     : "Perez",
                     "password"    : "iamthekingoftheworld",
-                    "city"        : "King's Landing",
-                    "description" : "Robert Baratheon",
-                    "groups"      : ["Baratheon","Domain Admins","Small Council","Protected Users"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "city"        : "Barcelona",
+                    "description" : "Roberto Perez",
+                    "groups"      : ["Perez","Domain Admins","WarehouseOps","Protected Users"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "joffrey.baratheon" : {
-                    "firstname"   : "Joffrey",
-                    "surname"     : "Baratheon",
+                "javier.lopez" : {
+                    "firstname"   : "Javier",
+                    "surname"     : "Perez",
                     "password"    : "1killerlion",
-                    "city"        : "King's Landing",
-                    "description" : "Joffrey Baratheon",
-                    "groups"      : ["Baratheon","Lannister"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "city"        : "Barcelona",
+                    "description" : "Javier Perez",
+                    "groups"      : ["Perez","Lopez"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "renly.baratheon" : {
-                    "firstname"   : "Renly",
-                    "surname"     : "Baratheon",
-                    "password"    : "lorastyrell",
-                    "city"        : "King's Landing",
-                    "description" : "Renly Baratheon",
-                    "groups"      : ["Baratheon","Small Council"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                "manuel.baratheon" : {
+                    "firstname"   : "Manuel",
+                    "surname"     : "Perez",
+                    "password"    : "arrozConPollo",
+                    "city"        : "Barcelona",
+                    "description" : "Manuel Perez",
+                    "groups"      : ["Perez","WarehouseOps"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "stannis.baratheon" : {
-                    "firstname"   : "Stannis",
-                    "surname"     : "Baratheon",
-                    "password"    : "Drag0nst0ne",
-                    "city"        : "King's Landing",
-                    "description" : "Stannis Baratheon",
-                    "groups"      : ["Baratheon","Small Council"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                "sandra.perez" : {
+                    "firstname"   : "Sandra",
+                    "surname"     : "Perez",
+                    "password"    : "Gam0nal",
+                    "city"        : "Barcelona",
+                    "description" : "Sandra Perez",
+                    "groups"      : ["Perez","WarehouseOps"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "petyer.baelish" : {
-                    "firstname"   : "Petyer",
-                    "surname"     : "Baelish",
+                "particio.burguense" : {
+                    "firstname"   : "Particio",
+                    "surname"     : "Burguense",
                     "password"    : "@littlefinger@",
-                    "city"        : "King's Landing",
-                    "description" : "Petyer Baelish",
-                    "groups"      : ["Small Council"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "city"        : "Barcelona",
+                    "description" : "Particio Burguense",
+                    "groups"      : ["WarehouseOps"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "lord.varys" : {
+                "lord.vega" : {
                     "firstname"   : "Lord",
-                    "surname"     : "Varys",
+                    "surname"     : "Vega",
                     "password"    : "_W1sper_$",
-                    "city"        : "King's Landing",
-                    "description" : "Lord Varys",
-                    "groups"      : ["Small Council"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "city"        : "Barcelona",
+                    "description" : "Lord Vega",
+                    "groups"      : ["WarehouseOps"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 },
-                "maester.pycelle" : {
-                    "firstname"   : "Maester",
-                    "surname"     : "Pycelle",
+                "maestro.paellero" : {
+                    "firstname"   : "Maestro",
+                    "surname"     : "Paellero",
                     "password"    : "MaesterOfMaesters",
-                    "city"        : "King's Landing",
-                    "description" : "Maester Pycelle",
-                    "groups"      : ["Small Council"],
-                    "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
+                    "city"        : "Barcelona",
+                    "description" : "Maestro Paellero",
+                    "groups"      : ["WarehouseOps"],
+                    "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 }
             }
         }

@@ -11,16 +11,16 @@ Missing scenarios:
 
 ### Servers
 This lab is actually composed of five virtual machines:
-- **kingslanding** : DC01  running on Windows Server 2019 (with windefender enabled by default)
-- **winterfell**   : DC02  running on Windows Server 2019 (with windefender enabled by default)
-- **castelblack**  : SRV02 running on Windows Server 2019 (with windefender **disabled** by default)
+- **dynamo-dc01** : DC01  running on Windows Server 2019 (with windefender enabled by default)
+- **finance-dc02**   : DC02  running on Windows Server 2019 (with windefender enabled by default)
+- **warehouse-srv02**  : SRV02 running on Windows Server 2019 (with windefender **disabled** by default)
 
-#### domain : north.sevenkingdoms.local
-- **winterfell**     : DC01
-- **castelblack**    : SRV02 : MSSQL / IIS
+#### domain : north.dynamo.local
+- **finance-dc02**     : DC01
+- **warehouse-srv02**    : SRV02 : MSSQL / IIS
 
-#### domain : sevenkingdoms.local
-- **kingslanding**   : DC02
+#### domain : dynamo.local
+- **dynamo-dc01**   : DC02
 
 
 The lab setup is automated using vagrant and ansible automation tools.
@@ -31,65 +31,65 @@ You can change the vm version in the Vagrantfile according to Stefan Scherer vag
 
 - You can find a lot of the available scenarios on [https://mayfly277.github.io/categories/ad/](https://mayfly277.github.io/categories/ad/)
 
-NORTH.SEVENKINGDOMS.LOCAL
+NORTH.DYNAMO.LOCAL
 - STARKS:              RDP on WINTERFELL AND CASTELBLACK
-  - arya.stark:        Execute as user on mssql
-  - eddard.stark:      DOMAIN ADMIN NORTH/ (bot 5min) LLMRN request to do NTLM relay with responder
-  - catelyn.stark:     
-  - robb.stark:        bot (3min) RESPONDER LLMR
-  - sansa.stark:       
-  - brandon.stark:     ASREP_ROASTING
-  - rickon.stark:      
+  - maria.garcia:        Execute as user on mssql
+  - jose.garcia:      DOMAIN ADMIN NORTH/ (bot 5min) LLMRN request to do NTLM relay with responder
+  - laura.garcia:     
+  - jesus.garcia:        bot (3min) RESPONDER LLMR
+  - susana.garcia:       
+  - vicente.garcia:     ASREP_ROASTING
+  - raul.garcia:      
   - theon.greyjoy:
-  - jon.snow:          mssql admin / KERBEROASTING / group cross domain / mssql trusted link
-  - hodor:             PASSWORD SPRAY (user=password)
+  - juan.iniesta:          mssql admin / KERBEROASTING / group cross domain / mssql trusted link
+  - pepe:             PASSWORD SPRAY (user=password)
 - NIGHT WATCH:         RDP on CASTELBLACK
-  - samwell.tarly:     Password in ldap description / mssql execute as login
+  - samuel.tejero:     Password in ldap description / mssql execute as login
                        GPO abuse (Edit Settings on "STARKWALLPAPER" GPO)
-  - jon.snow:          (see starks)
-  - jeor.mormont:      (see mormont)
+  - juan.iniesta:          (see starks)
+  - ivan.martinez:      (see mormont)
 - MORMONT:             RDP on CASTELBLACK
-  - jeor.mormont:      ACL writedacl-writeowner on group Night Watch
+  - ivan.martinez:      ACL writedacl-writeowner on group ITSupport
 - AcrossTheSea :       cross forest group
 
-SEVENKINGDOMS.LOCAL
+DYNAMO.LOCAL
 - LANISTERS
-  - tywin.lannister:   ACL forcechangepassword on jaime.lanister
-  - jaime.lannister:   ACL genericwrite-on-user joffrey.baratheon
-  - tyron.lannister:   ACL self-self-membership-on-group Small Council
-  - cersei.lannister:  DOMAIN ADMIN SEVENKINGDOMS
+  - kiko.lopez:   ACL forcechangepassword on jaime.lanister
+  - jaime.lopez:   ACL genericwrite-on-user javier.lopez
+  - daniel.lopez:   ACL self-self-membership-on-group WarehouseOps
+  - carla.lopez:  DOMAIN ADMIN DYNAMO
 - BARATHEON:           RDP on KINGSLANDING
-  - robert.baratheon:  DOMAIN ADMIN SEVENKINGDOMS
-  - joffrey.baratheon: ACL Write DACL on tyron.lannister
-  - renly.baratheon:
-  - stannis.baratheon: ACL genericall-on-computer kingslanding / ACL writeproperty-self-membership Domain Admins
+  - roberto.perez:  DOMAIN ADMIN DYNAMO
+  - javier.lopez: ACL Write DACL on daniel.lopez
+  - manuel.baratheon:
+  - sandra.perez: ACL genericall-on-computer dynamo-dc01 / ACL writeproperty-self-membership Domain Admins
 - SMALL COUNCIL :      ACL add Member to group dragon stone / RDP on KINGSLANDING
-  - petyer.baelish:    ACL writeproperty-on-group Domain Admins
-  - lord.varys:        ACL genericall-on-group Domain Admins / Acrossthenarrossea
-  - maester.pycelle:   ACL write owner on group Domain Admins
+  - particio.burguense:    ACL writeproperty-on-group Domain Admins
+  - lord.vega:        ACL genericall-on-group Domain Admins / Acrossthenarrossea
+  - maestro.paellero:   ACL write owner on group Domain Admins
 - DRAGONSTONE :        ACL Write Owner on KINGSGUARD
-- KINGSGUARD :         ACL generic all on user stannis.baratheon
+- KINGSGUARD :         ACL generic all on user sandra.perez
 - AccorsTheNarrowSea:       cross forest group
 
 
 ### Computers Users and group permissions
 
-- SEVENKINGDOMS
-  - DC01 : kingslanding.sevenkingdoms.local (Windows Server 2019) (SEVENKINGDOMS DC)
-    - Admins : robert.baratheon (U), cersei.lannister (U)
-    - RDP: Small Council (G)
+- DYNAMO
+  - DC01 : dynamo-dc01.dynamo.local (Windows Server 2019) (DYNAMO DC)
+    - Admins : roberto.perez (U), carla.lopez (U)
+    - RDP: WarehouseOps (G)
 
 - NORTH
-  - DC02 : winterfell.north.sevenkingdoms.local (Windows Server 2019) (NORTH DC)
-    - Admins : eddard.stark (U), catelyn.stark (U), robb.stark (U)
-    - RDP: Stark(G)
+  - DC02 : finance-dc02.north.dynamo.local (Windows Server 2019) (NORTH DC)
+    - Admins : jose.garcia (U), laura.garcia (U), jesus.garcia (U)
+    - RDP: Garcia(G)
 
-  - SRV02 : castelblack.essos.local (Windows Server 2019) (IIS, MSSQL, SMB share)
-    - Admins: jeor.mormont (U)
-    - RDP: Night Watch (G), Mormont (G), Stark (G)
+  - SRV02 : warehouse-srv02.essos.local (Windows Server 2019) (IIS, MSSQL, SMB share)
+    - Admins: ivan.martinez (U)
+    - RDP: ITSupport (G), Martinez (G), Garcia (G)
     - IIS : allow asp upload, run as NT Authority/network
     - MSSQL:
-      - admin : jon.snow
+      - admin : juan.iniesta
       - impersonate : 
         - execute as login : samwel.tarlly -> sa
-        - execute as user : arya.stark -> dbo
+        - execute as user : maria.garcia -> dbo
