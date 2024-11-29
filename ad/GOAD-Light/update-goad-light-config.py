@@ -15,7 +15,7 @@ def replace_words_in_folder(root_folder, replacements):
     for dirpath, _, filenames in os.walk(root_folder):
         for filename in filenames:
             # Skip Python scripts, DLL, and EXE files
-            if filename.endswith(('.py', '.dll', '.exe')):
+            if filename.endswith(('.py', '.dll', '.exe', '.bak')):
                 continue
 
             file_path = os.path.join(dirpath, filename)
@@ -59,8 +59,8 @@ replacements = {
     "DragonRider": "DynamoFriend",
     "Small Council": "WarehouseOps",
     "Baratheon": "HRTeam",
-    "renly": "manuel",
     "renly.baratheon": "manuel.perez",
+    "renly": "manuel",
     "Renly": "Manuel",
     "lorastyrell": "arrozConPollo",
     "Renly Baratheon": "Manuel Perez",
@@ -117,6 +117,7 @@ replacements = {
     "Jeor": "Ivan",
     "Mormont": "Martinez",
     "Lannister": "Lopez",
+    "Lanister": "Lopez",
     "tywin.lannister": "kiko.lopez",
     "Tywin": "Kiko",
     "Tywin Lannister": "Kiko Lopez",
