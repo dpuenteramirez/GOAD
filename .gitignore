@@ -38,4 +38,8 @@ docs/site/
 docs/olddocs/
 docs/mkdocs/site/
 scripts/archives/
+<<<<<<< HEAD
 .history/
+=======
+.history/
+>>>>>>> 134330f (Fixed a couple of files)

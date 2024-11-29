@@ -9,4 +9,8 @@ I left a little surprise for you in your room – the sword You've named "quiero
 I'll explain everything when I return. Until then, stay sharp, sis.
 
 Best,
+<<<<<<< HEAD
 John
+=======
+Juan
+>>>>>>> 134330f (Fixed a couple of files)
