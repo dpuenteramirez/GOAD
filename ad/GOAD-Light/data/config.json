@@ -423,7 +423,7 @@
                     "surname"     : "Baratheon",
                     "password"    : "iamthekingoftheworld",
                     "city"        : "King's Landing",
-                    "description" : "Robert Lanister",
+                    "description" : "Robert Baratheon",
                     "groups"      : ["Baratheon","Domain Admins","Small Council","Protected Users"],
                     "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
                 },
