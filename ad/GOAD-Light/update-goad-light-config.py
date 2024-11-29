@@ -14,8 +14,8 @@ def replace_words_in_folder(root_folder, replacements):
     """
     for dirpath, _, filenames in os.walk(root_folder):
         for filename in filenames:
-            # Skip the Python script itself
-            if filename.endswith('.py'):
+            # Skip Python scripts, DLL, and EXE files
+            if filename.endswith(('.py', '.dll', '.exe')):
                 continue
 
             file_path = os.path.join(dirpath, filename)
