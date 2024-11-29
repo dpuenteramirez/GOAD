@@ -107,4 +107,4 @@ SetAcl (Get-ADUser "jaime.lopez") (Get-ADUser "carla.lopez") "GenericWrite" "Non
 
 # writedacl-writeowner
 # https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#writedacl-writeowner
-SetAcl (Get-ADUser "kiko.lopez") (Get-ADGroup "WarehouseOps") "WriteDacl" "None"
+SetAcl (Get-ADUser "kiko.lopez") (Get-ADGroup "Warehouse Ops") "WriteDacl" "None"
