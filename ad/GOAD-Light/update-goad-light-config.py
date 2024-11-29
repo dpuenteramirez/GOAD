@@ -14,6 +14,10 @@ def replace_words_in_folder(root_folder, replacements):
     """
     for dirpath, _, filenames in os.walk(root_folder):
         for filename in filenames:
+            # Skip the Python script itself
+            if filename.endswith('.py'):
+                continue
+
             file_path = os.path.join(dirpath, filename)
             
             try:
@@ -79,7 +83,7 @@ replacements = {
     "Eddard Stark": "Jose Garcia",
     "Eddard": "Jose",
     "FightP3aceAndHonor!": "cieloAzulSalvaje",
-    "King's Landing": "Barcelona"
+    "King's Landing": "Barcelona",
     "Catelin Stark": "Laura Garcia",
     "Catelyn": "Laura",
     "robbsansabradonaryarickon": "jesuslauramariapedro",
@@ -95,7 +99,7 @@ replacements = {
     "rickon.stark": "raul.garcia",
     "Rickon": "Raul",
     "Rickon Stark": "Raul Garcia",
-    "Winter2022": "Verano2025"
+    "Winter2022": "Verano2025",
     "hodor": "pepe",
     "Brainless Giant": "El becario",
     "Jon Snow": "Juan Iniesta",
@@ -172,4 +176,4 @@ replacements = {
     "Maester": "Maestro",
     }
 
-replace_words_in_file(file_path, replacements)
+replace_words_in_folder(root_folder, replacements)
