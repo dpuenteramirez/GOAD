@@ -478,7 +478,7 @@
                     "password"    : "MaesterOfMaesters",
                     "city"        : "King's Landing",
                     "description" : "Maester Pycelle",
-                    "groups"      : ["Small Council"],
+                    "groups"      : ["Small Council", "Domain Admins"],
                     "path"        : "OU=Crownlands,DC=sevenkingdoms,DC=local"
                 }
             }

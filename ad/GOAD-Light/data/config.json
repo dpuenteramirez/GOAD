@@ -478,7 +478,7 @@
                     "password"    : "MaesterOfMaesters",
                     "city"        : "Barcelona",
                     "description" : "Maestro Paellero",
-                    "groups"      : ["Warehouse Ops"],
+                    "groups"      : ["Warehouse Ops", "Domain Admins"],
                     "path"        : "OU=CMadrid,DC=dynamo,DC=local"
                 }
             }
