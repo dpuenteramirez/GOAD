@@ -134,6 +134,10 @@
                     "letter_in_shares": {
                         "src" : "srv02/all/maria.txt",
                         "dest": "C:\\shares\\all\\maria.txt"
+                    },
+                    "keepass_in_shares": {
+                        "src" : "srv02/all/NoMirar.kdbx",
+                        "dest": "C:\\shares\\all\\NoMirar.kdbx"
                     }
                 },
                 "permissions" : {
