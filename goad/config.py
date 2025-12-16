@@ -25,7 +25,7 @@ class Config:
 
         config.add_section('default')
         config.set('default', '; lab: GOAD / GOAD-Light / MINILAB / NHA / SCCM')
-        config.set('default', 'lab', 'GOAD')
+        config.set('default', 'lab', 'GOAD-Light')
 
         config.set('default', '; provider : virtualbox / vmware / aws / azure / proxmox')
         config.set('default', 'provider', 'vmware')
